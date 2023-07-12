@@ -21,6 +21,7 @@ export const POST = (async ({ request }) => {
   const mintPubKey = new PublicKey(tokenMint);
   const amount = BigInt(_amount);
   console.log("Attempting to mint");
+  console.log({ minter, recipientPubKey, mintPubKey, amount });
 
   try {
     const res = await mint(minter, recipientPubKey, mintPubKey, amount);
