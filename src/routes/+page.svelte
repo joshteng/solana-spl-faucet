@@ -40,7 +40,7 @@
       body: JSON.stringify({
         recipient,
         mint,
-        amount,
+        amount: (BigInt(amount) * BigInt(10 ** tokenDecimals)).toString(),
       }),
     });
     const res = await resp.json();
