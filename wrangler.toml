@@ -1,2 +1,0 @@
-compatibility_flags = [ "nodejs_compat" ]
-node_compat = true
