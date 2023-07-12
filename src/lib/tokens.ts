@@ -3,8 +3,7 @@ import { PublicKey } from "@solana/web3.js";
 export const tokens = [
   {
     name: "CLMM Devnet Token X",
-    // publicKey: new PublicKey("3odhfo8SMsS6e5mHXLLBcCqYptmMKfpVsdTLxs2oh58v"),
-    publicKey: new PublicKey("3odhfo8SMsS6e5mHXLLBcCqYptmMKfpVsdTLxs2oh58a"),
+    publicKey: new PublicKey("3odhfo8SMsS6e5mHXLLBcCqYptmMKfpVsdTLxs2oh58v"),
     decimals: 8,
   },
   {
