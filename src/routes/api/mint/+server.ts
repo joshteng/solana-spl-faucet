@@ -20,9 +20,11 @@ export const POST = (async ({ request }) => {
   const recipientPubKey = new PublicKey(recipient);
   const mintPubKey = new PublicKey(tokenMint);
   const amount = BigInt(_amount);
+  console.log("Attempting to mint");
 
   try {
     const res = await mint(minter, recipientPubKey, mintPubKey, amount);
+    console.log({ res });
     return new Response(JSON.stringify({ txHash: res }, null, 2), {
       headers: {
         "content-type": "application/json;charset=UTF-8",
@@ -30,12 +32,16 @@ export const POST = (async ({ request }) => {
       },
     });
   } catch (err) {
-    return new Response(JSON.stringify({ ok: false, message: err.name }, null, 2), {
-      headers: {
-        "content-type": "application/json;charset=UTF-8",
-        ...corsHeaders,
-      },
-      status: 500,
-    });
+    console.log({ err });
+    return new Response(
+      JSON.stringify({ ok: false, message: err.name }, null, 2),
+      {
+        headers: {
+          "content-type": "application/json;charset=UTF-8",
+          ...corsHeaders,
+        },
+        status: 500,
+      }
+    );
   }
 }) satisfies RequestHandler;
