@@ -1,38 +1,31 @@
-# create-svelte
+# Solana SPL Faucet
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Make it easy for your test user to test your program on Devnet by allowing them to mint token to themselves.
 
-## Creating a project
+## Configurations
+1. Set the [minter env vars](#env-vars)
+2. Set your SPL token details here -> [/src/lib/tokens.ts](/src/lib/tokens.ts) !Minter should have authority to mint these tokens
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Build
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+Built with Sveltekit.
 
-# create a new project in my-app
-npm create svelte@latest my-app
+### Env Vars
 ```
+PUBLIC_MINTER_PUBLIC_KEY= # base 58 address of the minter
+PRIVATE_MINTER_PRIVATE_KEY= # uint array private key of minter
+```
+Minter is the mint authority for your SPL tokens.
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
+### Run Dev Server
+```sh
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+## Production
+Tested to work on Vercel with `adapter-node`.
 
-To create a production version of your app:
+Tried Cloudflare pages with `adapter-cloudflare` but as of 13 July 2023, it is too much of a hassle to make mint API endpoint to work because of `@solana/web.js`'s Buffer dependency and Cloudflare pages function lack of Node libraries.
 
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+A sample deployment at [https://faucet.raccoons.dev](https://faucet.raccoons.dev)

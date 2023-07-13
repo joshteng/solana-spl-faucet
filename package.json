@@ -4,17 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "vite dev",
-    "cloudflare": "vite build && wrangler pages dev .svelte-kit/cloudflare",
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "logs": "wrangler pages deployment tail",
-    "pages:dev": "wrangler pages dev --compatibility-date=2023-07-12 --proxy 5173 -- npm run dev",
-    "pages:deploy": "NODE_VERSION=16 npm run build && wrangler pages publish .svelte-kit/cloudflare"
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
-    "@sveltejs/adapter-cloudflare": "^2.3.1",
     "@sveltejs/adapter-auto": "^2.1.0",
     "@sveltejs/kit": "^1.20.4",
     "@types/uuid": "^9.0.2",
